@@ -1,0 +1,52 @@
+name: Continuous Deployment
+on:
+  push:
+    branches: [main]
+jobs:
+  # Build
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.1.2
+      - name: Clean Install Packages
+        run: npm ci
+      - name: Build Site
+        run: npm run build
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2.2.3
+        with:
+          path: public
+  
+  # Test
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.1.2
+      - name: Run Cypress Tests
+        uses: cypress-io/github-action@v2.9.7
+        with:
+          start: npm start
+          wait-on: http://localhost:3000
+  
+  # Deploy
+  deploy:
+    needs: [build, test]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+      - name: Download Artifact
+        uses: actions/download-artifact@v2.0.9
+        with:
+          path: public
+      - name: Deploy to GitHub Pages
+        uses: rdarida/simple-github-pages-deploy-action@v1
+        with:
+          git-base-folder: public
+          commit-message: Auto build static site
