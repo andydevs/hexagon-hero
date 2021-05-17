@@ -8,7 +8,7 @@ import Vector from './vector';
 import HMatrix from './hmatrix';
 
 export class Transform {
-    constructor(scale, orientation, position) {
+    constructor(scale, orientation=0, position=new Vector(0, 0)) {
         this._scale = scale
         this._orientation = orientation
         this._position = position
@@ -20,10 +20,14 @@ export class Transform {
             .rotate(this._orientation)
             .translate(this._position.x, this._position.y)
     }
+
+    translate(dist) {
+        this._position = this._position.add(dist)
+    }
 }
 
 export class Hexagon {
-    constructor(transform) {
+    constructor(transform=new Transform(40)) {
         this.transform = transform
         this.fill = '#00aaff'
     }

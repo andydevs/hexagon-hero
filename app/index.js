@@ -47,8 +47,27 @@ function drawPolygon(polygon) {
     ctx.fill()
 }
 
-// Draw polygon
-const polygon = new Hexagon(
-    new Transform(40, 0, new Vector(0, 0))
-)
-drawPolygon(polygon)
+// Polygon constants
+const tX = 1 + Math.cos(Math.PI/3)
+const tY = Math.sin(Math.PI/3)
+
+// Polygon params
+const rad = 50
+
+// Tile algorithm
+let numX = Math.ceil(canvas.width / (rad * tX))
+let numY = Math.ceil(canvas.height / (rad * tY))
+let polygon
+for (let jndex = 0; jndex < numY; jndex++) {
+    // Create polygon
+    polygon = new Hexagon(new Transform(rad*0.99))
+    polygon.transform.translate(new Vector(-OX, OY - 2*tY*jndex*rad))
+    drawPolygon(polygon)
+
+    for (let index = 0; index < numX; index++) {
+        polygon.transform.translate(new Vector(rad * tX, -rad * tY))
+        drawPolygon(polygon)
+        polygon.transform.translate(new Vector(rad * tX, rad * tY))
+        drawPolygon(polygon)
+    }
+}
