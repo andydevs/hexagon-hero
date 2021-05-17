@@ -1,9 +1,7 @@
-Custom Web Stack Template
+Hexagon Hero
 ================================================
 
-Template for whenever I'm building a new web 
-app/toy/experiment/thing to be hosted on GitHub 
-using my custom tech stack.
+Animated hexagon hero
 
 Technology
 -----------------------------------------------
@@ -14,6 +12,7 @@ Technology
 | Developing | Webpack        |
 | Testing    | Cypress        |
 | JavaScript | Babel          |
+| Animation  | Two.js         |
 | CSS        | SCSS           |
 | Hosting    | GitHub Pages   |
 | Automation | GitHub Actions |
