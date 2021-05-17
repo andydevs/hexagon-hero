@@ -9,20 +9,20 @@ import HMatrix from './hmatrix';
 
 export class Transform {
     constructor(scale, orientation=0, position=new Vector(0, 0)) {
-        this._scale = scale
-        this._orientation = orientation
-        this._position = position
+        this.scale = scale
+        this.orientation = orientation
+        this.position = position
     }
 
     get matrix() {
         return HMatrix
-            .scale(this._scale)
-            .rotate(this._orientation)
-            .translate(this._position.x, this._position.y)
+            .scale(this.scale)
+            .rotate(this.orientation)
+            .translate(this.position.x, this.position.y)
     }
 
     translate(dist) {
-        this._position = this._position.add(dist)
+        this.position = this.position.add(dist)
     }
 }
 
