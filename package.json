@@ -1,7 +1,7 @@
 {
-  "name": "custom-web-stack-template",
+  "name": "hexagon-hero",
   "version": "1.0.0",
-  "description": "My custom stack for web apps hosted on github pages",
+  "description": "Animated hero image of hexagons",
   "author": "Anshul Kharbanda",
   "license": "MIT",
   "keywords": [
@@ -20,12 +20,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/andydevs/custom-web-stack-template.git"
+    "url": "git+https://github.com/andydevs/hexagon-hero.git"
   },
   "bugs": {
-    "url": "https://github.com/andydevs/custom-web-stack-template/issues"
+    "url": "https://github.com/andydevs/hexagon-hero/issues"
   },
-  "homepage": "https://github.com/andydevs/custom-web-stack-template#readme",
+  "homepage": "https://github.com/andydevs/hexagon-hero#readme",
   "devDependencies": {
     "@babel/core": "^7.12.3",
     "@babel/preset-env": "^7.12.1",
